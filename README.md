@@ -8,4 +8,3 @@
     - pip install stability-sdk
 * Open the 'main.py' file and input your API key
 * You will need a server like ngrok or Amazon ECS (ECS after the flask container is put into a docker image) to run this file, or you can use localhost for the time being
-# stable_diffusion_api
