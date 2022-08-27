@@ -7,7 +7,7 @@ from base64 import b64encode
 
 # SETTING API KEY WITH STABILITY CLIENT
 stability_api = client.StabilityInference(
-    key='YOUR_STABILITY_API_KEY_HERE', 
+    key='ENTER_YOUR_STABILITY/DREAMSTUDIO_API_KEY_HERE', 
     verbose=True,
 )
 
@@ -53,4 +53,4 @@ def request_page():
     return json_dump
 
 if __name__ == '__main__':
-    app.run(port=8080)
+    app.run(host='0.0.0.0')
