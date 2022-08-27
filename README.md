@@ -4,6 +4,7 @@
 * The prompt is accessed by the following url query
     * /prompt/?prompt=YOUR_PROMPT_HERE
 * In theory the returned Image can be used in a html image tag, like this: <img src=`data:image/png;base64, ${json.image}` />
+* There is a pre-configured dockerfile in this repository, that is ready to be built and deployed if that is a better option for you, the repository is "https://github.com/47Key/stable-diffusion_api-docker"
 
 * Please report any issues you have, and submit a pull request if you have a better way.
 
@@ -12,4 +13,4 @@
 * Install all dependencies for this project
     * pip install -r requirements.txt
 * Open the 'main.py' file and input your API key
-* You will need a server like ngrok or Amazon ECS (ECS after the flask container is put into a docker image) to run this file, or you can use localhost for the time being
+* You will need a server to host this, some options would be ngrok, Amazon ECS, or Amazon Lightsail(beginner-friendly)
