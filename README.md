@@ -9,7 +9,7 @@
 
 ## To Get Started
 
-* Install all depencies for this project
+* Install all dependencies for this project
     * pip install -r requirements.txt
 * Open the 'main.py' file and input your API key
 * You will need a server like ngrok or Amazon ECS (ECS after the flask container is put into a docker image) to run this file, or you can use localhost for the time being
