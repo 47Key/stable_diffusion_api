@@ -1,18 +1,23 @@
+from distutils.command import upload
 from flask import *
 import json, time
 import warnings
+import io
+import os
+from PIL import Image
 from stability_sdk import client
 import stability_sdk.interfaces.gooseai.generation.generation_pb2 as generation
-from base64 import b64encode
 
 # SETTING API KEY WITH STABILITY CLIENT
 stability_api = client.StabilityInference(
-    key='YOUR_STABILITY_API_KEY_HERE', 
+    key='YOUR_STABILITY-AI/DREAMSTUDIO_API-KEY_HERE', 
     verbose=True,
 )
 
 # INITIALIZING FLASK APP
 app = Flask(__name__)
+basedir = os.path.abspath(os.path.dirname(__file__))
+uploads_path = os.path.join(basedir, 'static/images/' + 'image.png')
 
 # INITIALIZING HOME ROUTE, ASKING FOR PROMPT
 @app.route('/', methods=['GET'])
@@ -45,12 +50,17 @@ def request_page():
                 )
             # Checks if the artifact is an acceptable image
             if artifact.type == generation.ARTIFACT_IMAGE:
-                img = b64encode(artifact.binary) # Encodes binary into base64 to pass to user
-                data_set = {'Page': 'Prompt', 'Image': f'{img}', 'Timestamp': time.time() } # Includes the base 64 encoded image in JSON
+                img = Image.open(io.BytesIO(artifact.binary)) # Encodes binary into base64 to pass to user
+                img.save(uploads_path, "png") # saves image to image.png in static folder
+                data_set = {'Page': 'Prompt', 'Image': 'Success', 'Location': '/static/images/image.png', 'Timestamp': time.time() } # Returns success when image is saved, allowing the url /images to be presented on screen
                 json_dump = json.dumps(data_set)
 
 
     return json_dump
+@app.route('/images', methods=['GET'])
+def return_image():
+    return render_template("index.html")
+
 
 if __name__ == '__main__':
     app.run(port=8080)
