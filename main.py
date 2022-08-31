@@ -22,7 +22,7 @@ uploads_path = os.path.join(basedir, 'static/images/' + 'image.png')
 # INITIALIZING HOME ROUTE, ASKING FOR PROMPT
 @app.route('/', methods=['GET'])
 def home_page():
-    data_set = {'Page': 'Home', 'Message': 'Please include prompt in query, as /prompt/?prompt=PROMPT_HERE', 'Timestamp': time.time() }
+    data_set = {'Page': 'Home', 'Message': 'Please include prompt in query, as /prompt/?prompt=PROMPT_HERE', 'Timestamp': time.time() } # Test json dump that explains prompt usage if a developer comes across it
     json_dump= json.dumps(data_set)
 
     return json_dump
@@ -63,4 +63,4 @@ def return_image():
 
 
 if __name__ == '__main__':
-    app.run(port=8080)
+    app.run(host='0.0.0.0')

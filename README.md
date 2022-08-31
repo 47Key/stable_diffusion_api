@@ -5,9 +5,12 @@
     * /prompt/?prompt=YOUR_PROMPT_HERE
 * Once the success response is returned, you can access the image via <img src"YOUR_URL_HERE/static/images/image.png">
 
-## To get Started
 
-* Install all depencies for this project
-    * pip install stability-sdk
+* Please report any issues you have, and submit a pull request if you have a better way.
+
+## To Get Started
+
+* Install all dependencies for this project
+    * pip install -r requirements.txt
 * Open the 'main.py' file and input your API key
-* You will need a server like ngrok or Amazon ECS (ECS after the flask container is put into a docker image) to run this file, or you can use localhost for the time being
+* You will need a server to host this, some options would be ngrok, Amazon ECS, or Amazon Lightsail(beginner-friendly)
